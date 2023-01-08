@@ -40,6 +40,9 @@ pub mod test {
         // println!("{:?}", read_byte_buf.read_i8());
         // println!("{:?}", read_byte_buf.read_u8());
         println!("{:?}", read_byte_buf.read_u16_le());
+        println!("{:?}", read_byte_buf.mark_read_index().read_i16_le());
+        read_byte_buf.reset_read_index();
+        println!("{:?}", read_byte_buf.read_i16_le());
         println!("{:?}", read_byte_buf.read_i16_le());
     }
 

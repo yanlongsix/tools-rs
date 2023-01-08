@@ -7,7 +7,8 @@ pub mod read_byte_buf;
 pub trait ByteBuf {
     fn capacity(&self) -> usize;
     fn readable(&self) -> usize;
-    fn mark_read_index(&mut self);
+    fn mark_read_index(&mut self) -> &mut Self;
+    fn reset_read_index(&mut self);
 
 
     // get

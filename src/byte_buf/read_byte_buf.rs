@@ -54,8 +54,15 @@ impl ByteBuf for ReadByteBuf {
         self.capacity - self.read_index
     }
 
-    fn mark_read_index(&mut self) {
-        self.read_mark = self.read_index as isize
+    fn mark_read_index(&mut self) -> &mut Self{
+        self.read_mark = self.read_index as isize;
+        self
+    }
+
+    fn reset_read_index(&mut self) {
+        self.read_index = self.read_mark as usize;
+        self.read_mark = -1;
+
     }
 
     fn get_bytes_of_write(&self, target: &mut [u8]) -> ByteBufResult<()> {
