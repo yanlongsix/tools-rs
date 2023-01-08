@@ -60,6 +60,9 @@ impl ByteBuf for ReadByteBuf {
     }
 
     fn reset_read_index(&mut self) {
+        if self.read_mark == -1 {
+            return;
+        }
         self.read_index = self.read_mark as usize;
         self.read_mark = -1;
 
